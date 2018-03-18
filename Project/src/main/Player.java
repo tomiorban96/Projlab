@@ -2,15 +2,15 @@ package main;
 
 public class Player extends Thing{
 	/**
-	 * A játékos pontjai.
+	 * A jÃ¡tÃ©kos pontjai.
 	 */
     private int points;
     /**
-	 * A Player a játékos inputjára mozog. Ha nem létezõ (null) Field-re mozogna akkor visszatér anélkül hogy bármi történne.
-	 * Ha nem null a Field akkor meghívja az Accept függvényét. Ha az true-val tér vissza akkor meghívja az eddigi Field-nek
-	 * a Remove függvényét, így teljesen átkerül a következõ Field-re.
-	 *  Ha az Accept visszatérése false akkor nem hívja meg a Remove-ot.
-	 *  @param d az az irány amerre mozog
+	 * A Player a jÃ¡tÃ©kos inputjÃ¡ra mozog. Ha nem lÃ©tezÅ‘ (null) Field-re mozogna akkor visszatÃ©r anÃ©lkÃ¼l hogy bÃ¡rmi tÃ¶rtÃ©nne.
+	 * Ha nem null a Field akkor meghÃ­vja az Accept fÃ¼ggvÃ©nyÃ©t. Ha az true-val tÃ©r vissza akkor meghÃ­vja az eddigi Field-nek
+	 * a Remove fÃ¼ggvÃ©nyÃ©t, Ã­gy teljesen Ã¡tkerÃ¼l a kÃ¶vetkezÅ‘ Field-re.
+	 *  Ha az Accept visszatÃ©rÃ©se false akkor nem hÃ­vja meg a Remove-ot.
+	 *  @param d az az irÃ¡ny amerre mozog
 	 */
     public void Move(Direction d){
     	System.out.println("Player.Move(d)");
@@ -35,8 +35,8 @@ public class Player extends Thing{
         
     }
     /**
-	 * A Player meghal, vagyis eltûnik a pályáról. Meghívja a field Remove függvényét, anélkül hogy elõször áthelyezné magát
-	 *  másvhova. Ezzel kikerül a játékból.
+	 * A Player meghal, vagyis eltÅ±nik a pÃ¡lyÃ¡rÃ³l. MeghÃ­vja a field Remove fÃ¼ggvÃ©nyÃ©t, anÃ©lkÃ¼l hogy elÅ‘szÃ¶r Ã¡thelyeznÃ© magÃ¡t
+	 *  mÃ¡svhova. Ezzel kikerÃ¼l a jÃ¡tÃ©kbÃ³l.
 	 */
     public void Die(){
     	System.out.println("Player.Die()");
@@ -44,13 +44,13 @@ public class Player extends Thing{
     	System.out.println("Player.Die() returns");
     }
     /**
-	 * A Playert tolják egy irányba. Ha a Playert közvetlen tolja egy másik Player (vagyis a p és t megegyezik) akkor false-szal tér vissza.
-	 * Ha a Playert közvetve tolják akkor meghívja a következõ Field Accept-jét. Ha az true-val tér vissza akkor kiveszi magát az eddigi Field-rõl
-	 * a Remove-val és visszatér true-val, ha false-szal akkor meghívja a Die függvényét, meghal és visszatér true-val.
-	 * @param p az a Player aki ezt a Playert eredetileg tolja közvetve, vagy közvetlen
-	 * @param t az a Thing ami ezt a játékost közvetlen tolja (lehet ugyanaz mint a p)
-	 * @param d az a irány amerre a játékost tolják
-	 * @return sikerült-e a Player-nek elmennie a fieldrõl
+	 * A Playert toljÃ¡k egy irÃ¡nyba. Ha a Playert kÃ¶zvetlen tolja egy mÃ¡sik Player (vagyis a p Ã©s t megegyezik) akkor false-szal tÃ©r vissza.
+	 * Ha a Playert kÃ¶zvetve toljÃ¡k akkor meghÃ­vja a kÃ¶vetkezÅ‘ Field Accept-jÃ©t. Ha az true-val tÃ©r vissza akkor kiveszi magÃ¡t az eddigi Field-rÅ‘l
+	 * a Remove-val Ã©s visszatÃ©r true-val, ha false-szal akkor meghÃ­vja a Die fÃ¼ggvÃ©nyÃ©t, meghal Ã©s visszatÃ©r true-val.
+	 * @param p az a Player aki ezt a Playert eredetileg tolja kÃ¶zvetve, vagy kÃ¶zvetlen
+	 * @param t az a Thing ami ezt a jÃ¡tÃ©kost kÃ¶zvetlen tolja (lehet ugyanaz mint a p)
+	 * @param d az a irÃ¡ny amerre a jÃ¡tÃ©kost toljÃ¡k
+	 * @return sikerÃ¼lt-e a Player-nek elmennie a fieldrÅ‘l
 	 */
     public boolean PushedBy(Player p, Thing t, Direction d){
     	System.out.println("Player.Pushedby(p,t,d)");
@@ -75,8 +75,8 @@ public class Player extends Thing{
     	}
     }
     /**
-	 * Visszaadja a játékos pontszámát.
-	 * @return a points értéke
+	 * Visszaadja a jÃ¡tÃ©kos pontszÃ¡mÃ¡t.
+	 * @return a points Ã©rtÃ©ke
 	 */
     public int GetPoints(){
     	System.out.println("Player.GetPoint()");
@@ -85,11 +85,11 @@ public class Player extends Thing{
         
     }
     /**
-	 * Megnöveli a játékos pontszámát eggyel (1).
+	 * MegnÃ¶veli a jÃ¡tÃ©kos pontszÃ¡mÃ¡t eggyel (1).
 	 */
     public void AddPoint(){
     	System.out.println("Player.AddPoint()");
     	System.out.println("Player.Addpoint() returns");
         points++;
-    }
+    } 
 }

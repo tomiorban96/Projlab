@@ -60,5 +60,5 @@ public class Hole extends Field {
     public void SetOpen(boolean b){
         System.out.println("Hole.SetOpen()");
         open = b;
-    }
+    } 
 }
