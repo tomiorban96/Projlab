@@ -5,6 +5,7 @@ public class Player extends Thing{
 	 * A játékos pontjai.
 	 */
     private int points;
+    private boolean alive;
     /**
 	 * A Player a játékos inputjára mozog. Ha nem létező (null) Field-re mozogna akkor visszatér anélkül hogy bármi történne.
 	 * Ha nem null a Field akkor meghívja az Accept függvényét. Ha az true-val tér vissza akkor meghívja az eddigi Field-nek
@@ -12,6 +13,7 @@ public class Player extends Thing{
 	 *  Ha az Accept visszatérése false akkor nem hívja meg a Remove-ot.
 	 *  @param d az az irány amerre mozog
 	 */
+    
     public void Move(Direction d){
     	System.out.println("Player.Move(d)");
         Field neighbor=field.GetNeighbor(d);
@@ -40,6 +42,8 @@ public class Player extends Thing{
 	 */
     public void Die(){
     	System.out.println("Player.Die()");
+    	alive=false;
+    	game.CheckEndGame();
     	field.Remove(this);
     	System.out.println("Player.Die() returns");
     }
@@ -91,5 +95,8 @@ public class Player extends Thing{
     	System.out.println("Player.AddPoint()");
     	System.out.println("Player.Addpoint() returns");
         points++;
-    } 
+    }
+    public boolean GetAlive() {
+    	return alive;
+    }
 }

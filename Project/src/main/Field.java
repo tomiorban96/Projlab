@@ -13,15 +13,31 @@ public class Field {
     * Lehet egy, vagy több irányban null, pl.:a pálya sarkán.
     */
     private Hashtable<Direction,Field> neighbors;
+
+	/**
+ 	 * A mező konstruktora
+ 	 */
+    public Field() {
+    	
+    }
+	/**
+	 * A mező konstruktora, kezdeti értékekkel
+	 * @param movable a movable kívánt értéke
+	 * @param neighbors a neighbors kívánt értéke
+	 */
+    public Field(Thing movable, Hashtable<Direction,Field> neighbors) {
+    	this.movable=movable;
+    	this.neighbors=neighbors;
+    }
     /**
-    * Ha a movable null, felveszi a p:Player játékost a movable tagváltozónak. Ekkor true-t ad vissza.
-    * Ha a movable nem null akkor először meghívja a movable pushedBy(pusher,p,d) függvényét. Ha az true-val tér vissza
-    * akkor elhelyezi a p-t a movable tagváltozóban. Ha false-al tér vissza akkor nem helyezi el p-t és false-al tér vissza.
-    * @param p az a Player aki közvetlen rá akar lépni a mezőre
-    * @param pusher az a Player aki eredetileg tolta a p-t
-    * @param d az az irány amerre tolódnia kell a movable-nek ha az nem null
-    * @return sikerült-e elhelyezni a p-t a mezőn
-    */
+     * Ha a movable null, felveszi a p:Player játékost a movable tagváltozónak. Ekkor true-t ad vissza.
+     * Ha a movable nem null akkor először meghívja a movable pushedBy(pusher,p,d) függvényét. Ha az true-val tér vissza
+     * akkor elhelyezi a p-t a movable tagváltozóban. Ha false-al tér vissza akkor nem helyezi el p-t és false-al tér vissza.
+     * @param p az a Player aki közvetlen rá akar lépni a mezőre
+     * @param pusher az a Player aki eredetileg tolta a p-t
+     * @param d az az irány amerre tolódnia kell a movable-nek ha az nem null
+     * @return sikerült-e elhelyezni a p-t a mezőn
+     */
     public boolean Accept(Player p, Player pusher, Direction d){
         System.out.println("Field.Accept()");
          if (movable!=null){                                     //van rajta valami
@@ -71,6 +87,7 @@ public class Field {
      */
     public void Remove(Thing t){
         System.out.println("Field.Remove()");
+        System.out.println("Field.Remove() returns");
         movable=null;
     }
     /**
@@ -83,12 +100,7 @@ public class Field {
        System.out.println("Field.GetNeighbor() returns");
        return neighbors.get(d);
     }
-    /**
-     * A mező konstruktora
-     * eredetileg a movable null, ha a játék elején van rajta valami akkor az később kerül rá
-     */
-    Field(){
-        movable = null;
-        neighbors = new Hashtable<Direction,Field>();
-    }
+
+    
+    
 }

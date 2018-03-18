@@ -25,4 +25,7 @@ public abstract class Thing {
         System.out.println("Thing.PushedBy() returns false");
         return false; 
     }
+     public void SetField(Field field) {
+    	this.field=field;
+    }
 }
