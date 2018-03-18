@@ -12,5 +12,5 @@ public class Wall extends Field{
         System.out.println("Wall.Accept()");
         System.out.println("Wall.Accept() returns false");
         return false;
-    } 
+    }  
 }
