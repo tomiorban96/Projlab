@@ -1,11 +1,12 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Field {
 
     protected Thing movable;
-    private Hashtable<Direction,Field> neighbors[];
+    private Hashtable<Direction,Field> neighbors;
 
     public boolean Accept(Player p, Player pusher, Direction d){
         System.out.println("Field.Accept()");
@@ -25,7 +26,7 @@ public class Field {
         }
     }
 
-    public boolean Accept(Box b, Player pusher){
+    public boolean Accept(Box b, Player pusher,Direction d){
         System.out.println("Field.Accept()");
          if (movable!=null){                                     //van rajta valami
             if (movable.PushedBy(pusher,b,d)){                  //ha el lehet tolni
