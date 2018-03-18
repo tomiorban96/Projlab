@@ -11,18 +11,31 @@ public class Game {
     private int ActiveBoxes; //TODO: ez itt int? class diáról nem derül ki
 
     public void StartGame(){
-
+        System.out.println("Game.StartGame()");
+        board.SetUp();
     }
 
     public void EndGame(){
-
+        System.out.println("Game.EndGame()");
+        for (Player p:players){
+            p.GetPoints();
+        }
     }
 
     public boolean CheckEndGame(){
-        return false;
+        System.out.println("Game.CheckEndGame()");
+        if (ActiveBoxes==0){
+            System.out.println("Game.CheckEndGame() returns");
+            return true;
+        }
+        else{
+            System.out.println("Game.CheckEndGame() returns");
+            return false;
+        }
     }
 
     public void DecActiveBoxes(){
-        ActiveBoxes--;
+        System.out.println("Game.DecActiveBoxes()");
+        //ActiveBoxes--;
     }
 }
