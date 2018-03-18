@@ -5,8 +5,8 @@ public class Hole extends Field {
     private boolean open;
 
     public boolean Accept(Player p, Player pusher, Direction d){
-         if (!movable.isEmpty()){                                     //van rajta valami
-            if (movable.PushedBy(pusher,b,d)){                  //ha el lehet tolni
+         if (movable!=null){                                     //van rajta valami
+            if (movable.PushedBy(pusher,p,d)){                  //ha el lehet tolni
                 if (open){                                      // ha a lyuk nyitva van
                     p.Die();
                 }
@@ -29,7 +29,7 @@ public class Hole extends Field {
 
     public boolean Accept(Box b, Player pusher,Direction d){        //doboz mozog rá
                                                               
-        if (!movable.isEmpty()){                                     //van rajta valami
+        if (movable!=null){                                     //van rajta valami
             if (movable.PushedBy(pusher,b,d)){                  //ha el lehet tolni
                 if (open){                                      // ha a lyuk nyitva van
                     b.Die();
