@@ -19,7 +19,7 @@ public class Field {
 
     }
 
-    public Field GetNeighbour(Direction d){
+    public Field GetNeighbor(Direction d){
         return neighbor[d.ordinal()];
     }
 

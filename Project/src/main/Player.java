@@ -5,7 +5,7 @@ public class Player extends Thing{
     private int points;
 
     public void Move(Direction d){
-        Field neighbor = field.GetNeighbour(d);
+        Field neighbor = field.GetNeighbor(d);
 
         if (neighbor == null) return;
 
