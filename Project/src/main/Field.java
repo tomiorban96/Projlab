@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Field {
 
-    private ArrayList<Thing> movable;
+    protected ArrayList<Thing> movable;
     private Field neighbor[];
 
     public boolean Accept(Player p, Player pusher, Direction d){

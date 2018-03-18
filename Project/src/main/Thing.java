@@ -2,7 +2,7 @@ package main;
 
 public abstract class Thing {
 
-    private Field field;
+    protected Field field;
 
     abstract void Die();
 
