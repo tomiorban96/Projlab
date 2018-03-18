@@ -31,6 +31,7 @@ public class PointField extends Field {
     }
 
     public boolean Accept(Box b, Player pusher, Direction d){
+        System.out.println("PointField.Accept()");
         if (movable!=null){                                                      //ha van rajta valami
             if (completed){                                                      //ha láda van rajta
                 System.out.println("PointField.Accept() returns false");    
