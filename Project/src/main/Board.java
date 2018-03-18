@@ -7,6 +7,6 @@ public class Board {
     private ArrayList<Field> fields;
 
     public void SetUp(){
-
+        System.out.println("Board.Setup()");
     }
 }
