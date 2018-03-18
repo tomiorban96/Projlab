@@ -13,21 +13,21 @@ public class Player extends Thing{
 	 *  @param d az az irány amerre mozog
 	 */
     public void Move(Direction d){
-    	System.out.println("Player.Move()");
-        Field neighbor = field.GetNeighbor(d);
+    	System.out.println("Player.Move(d)");
+        Field neighbor=field.GetNeighbor(d);
         Field currentField=field;
         if (neighbor == null) {
-        	System.out.println("Player.Move() returns");
+        	System.out.println("Player.Moved() returns");
         	return;
         }
         else {
         	if(neighbor.Accept(this,this, d)) {
         		currentField.Remove(this);
-        		System.out.println("Player.Move() returns");
+        		System.out.println("Player.Move(d) returns");
             	return;
         	}
         	else {
-        		System.out.println("Player.Move() returns");
+        		System.out.println("Player.Move(d) returns");
         		return;
         	}
         	
@@ -53,9 +53,9 @@ public class Player extends Thing{
 	 * @return sikerült-e a Player-nek elmennie a fieldrõl
 	 */
     public boolean PushedBy(Player p, Thing t, Direction d){
-    	System.out.println("Player.Pushedby()");
+    	System.out.println("Player.Pushedby(p,t,d)");
     	if(p==(Player)t) {
-    		System.out.println("Player.Pushedby() returns");
+    		System.out.println("Player.Pushedby(p,t,d) returns");
     		return false;
     	}
     	else {
@@ -63,12 +63,12 @@ public class Player extends Thing{
     		Field neighbor=field.GetNeighbor(d);
     		if(neighbor.Accept(this,p,d)) {
     			currentField.Remove(this);
-    			System.out.println("Player.Pushedby() returns");
+    			System.out.println("Player.Pushedby(p,t,d) returns");
     			return true;
     		}
     		else {
     			Die();
-    			System.out.println("Player.Pushedby() returns");
+    			System.out.println("Player.Pushedby(p,t,d) returns");
     			return true;
     		}
     		
@@ -78,7 +78,7 @@ public class Player extends Thing{
 	 * Visszaadja a játékos pontszámát.
 	 * @return a points értéke
 	 */
-    public int GetPoint(){
+    public int GetPoints(){
     	System.out.println("Player.GetPoint()");
     	System.out.println("Player.GetPoint() returns");
     	return points;
