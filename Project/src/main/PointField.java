@@ -59,6 +59,6 @@ public class PointField extends Field {
             System.out.println("PointField.Accept() returns true");             //ha nincs rajta semmi
             return true;
         }
-        return false;
+        return false; 
     }
 }
