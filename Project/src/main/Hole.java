@@ -5,6 +5,7 @@ public class Hole extends Field {
     private boolean open;
 
     public boolean Accept(Player p, Player pusher, Direction d){
+        System.out.println("Hole.Accept()");
          if (movable!=null){                                     //van rajta valami
             if (movable.PushedBy(pusher,p,d)){                  //ha el lehet tolni
                 if (open){                                      // ha a lyuk nyitva van
@@ -28,7 +29,7 @@ public class Hole extends Field {
     }
 
     public boolean Accept(Box b, Player pusher,Direction d){        //doboz mozog rá
-                                                              
+        System.out.println("Hole.Accept()");                                                     
         if (movable!=null){                                     //van rajta valami
             if (movable.PushedBy(pusher,b,d)){                  //ha el lehet tolni
                 if (open){                                      // ha a lyuk nyitva van
