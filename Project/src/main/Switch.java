@@ -9,7 +9,7 @@ public class Switch extends Field {
         if (!movable.isEmpty()){                                     //ha van rajta valami
             if (movable.PushedBy(pusher,b,d)){                  //ha azt el lehet tolni
                 System.out.println("Switch.Accept() returns true");
-                return true;    
+                return true;     
             }
             else{                                               //ha azt nem lehet eltolni 
                 System.out.println("Switch.Accept() returns false");             
