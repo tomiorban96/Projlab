@@ -3,6 +3,7 @@ package main;
 public abstract class Thing {
 
     protected Field field;
+    protected Game game;
 
     abstract void Die();
 
