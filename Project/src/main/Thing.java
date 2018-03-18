@@ -5,7 +5,7 @@ public abstract class Thing {
     protected Field field;
     protected Game game;
 
-    abstract void Die();
+    abstract void Die(); 
 
     public boolean PushedBy(Player p, Thing t, Direction d){
         System.out.println("Thing.PushedBy()");
