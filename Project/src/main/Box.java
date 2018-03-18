@@ -6,7 +6,7 @@ public class Box extends Thing{
 	
 	 /**
 	 * A Box meghal, vagyis eltûnik a pályáról. Meghívja a field Remove függvényét, anélkül hogy elõször áthelyezné magát
-	 *  másvhova. Ezzel kikerül a játékból.
+	 *  másvhova. Ezzel kikerül a játékból. Csökkenti az aktív dobozok számát, és ellenőrizteti, hogy vége van-e a játéknak.
 	 */
    public void Die(){
    	System.out.println("Box.Die()");
