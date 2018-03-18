@@ -4,13 +4,14 @@ public class Box extends Thing{
 
 	
 	 /**
-		 * A Box meghal, vagyis eltûnik a pályáról. Meghívja a field Remove függvényét, anélkül hogy elõször áthelyezné magát
-		 *  másvhova. Ezzel kikerül a játékból.
+		 * A Box meghal, vagyis eltÃ»nik a pÃ¡lyÃ¡rÃ³l. MeghÃ­vja a field Remove fÃ¼ggvÃ©nyÃ©t, anÃ©lkÃ¼l hogy elÃµszÃ¶r Ã¡thelyeznÃ© magÃ¡t
+		 *  mÃ¡svhova. Ezzel kikerÃ¼l a jÃ¡tÃ©kbÃ³l.
 		 */
     public void Die(){
     	System.out.println("Box.Die()");
     	field.Remove(this);
-    	
+    	game.DecActiveBoxes();
+	game.CheckEndGame();
     	System.out.println("Box.Die() returns");
     	return;
 
