@@ -687,5 +687,23 @@ public class Skeleton {
     	p2.setGame(game);
     	p.Move(Direction.Down);
     }
+    private static void Jatekospontszerzore(boolean fieldCompleted) {
+    	Player p=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	PointField pf=new PointField();
+    	Box b=new Box();
+    	
+    	h.put(Direction.Down, pf);
+    	if (fieldCompleted) {
+    		pf.setCompleted(true);
+    		pf.setMovable(b);
+    	}
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	f2.setNeighbors(h);
+    	p.setField(f2);
+    	p.Move(Direction.Down);
+    	
+    }
     
 }
