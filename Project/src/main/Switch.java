@@ -41,7 +41,7 @@ public class Switch extends Field {
             return true;
         }
     }
-    public void Remove(t:Thing){
+    public void Remove(Thing t){
         System.out.println("Switch.Remove()");
         movable=null;
         hole.SetOpen(false);
