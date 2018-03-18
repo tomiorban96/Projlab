@@ -7,7 +7,13 @@ public class Field {
 
     protected Thing movable;
     private Hashtable<Direction,Field> neighbors;
-
+    public Field() {
+    	
+    }
+    public Field(Thing movable, Hashtable<Direction,Field> neighbors) {
+    	this.movable=movable;
+    	this.neighbors=neighbors;
+    }
     public boolean Accept(Player p, Player pusher, Direction d){
         System.out.println("Field.Accept()");
          if (movable!=null){                                     //van rajta valami
@@ -46,6 +52,7 @@ public class Field {
 
     public void Remove(Thing t){
         System.out.println("Field.Remove()");
+        System.out.println("Field.Remove() returns");
         movable=null;
     }
 
@@ -55,8 +62,5 @@ public class Field {
        return neighbors.get(d);
     }
 
-    Field(){
-        movable = null;
-        neighbors = new Hashtable<Direction,Field>();
-    }
+    
 }
