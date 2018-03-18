@@ -8,7 +8,7 @@ public abstract class Thing {
 
     public boolean PushedBy(Player p, Thing t, Direction d){
         System.out.println("Thing.PushedBy()");
-        System.out.println("Thing.PushedBy() returns");
+        System.out.println("Thing.PushedBy() returns false");
         return false;
     }
 }
