@@ -34,7 +34,7 @@ public class Switch extends Field {
                 System.out.println("Switch.Accept() returns false");
                 return false;
             }
-        }
+        } 
         else {                                                  //ha nincs rajta semmi
             hole.SetOpen(true);
             System.out.println("Switch.Accept() returns true");
