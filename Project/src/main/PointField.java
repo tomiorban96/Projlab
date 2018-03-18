@@ -8,7 +8,7 @@ public class PointField extends Field {
     public boolean Accept(Player p, Player pusher, Direction d){
         System.out.println("PointField.Accept()");
         
-        if (movable!=null){                                                      //ha van rajta valami
+        if (!movable.isEmpty()){                                                      //ha van rajta valami
             if (completed){                                                      //ha láda van rajta
                 System.out.println("PointField.Accept() returns false");    
                 return false;
@@ -31,7 +31,7 @@ public class PointField extends Field {
     }
 
     public boolean Accept(Box b, Player pusher, Direction d){
-        if (movable!=null){                                                      //ha van rajta valami
+        if (!movable.isEmpty()){                                                      //ha van rajta valami
             if (completed){                                                      //ha láda van rajta
                 System.out.println("PointField.Accept() returns false");    
                 return false;
@@ -59,6 +59,6 @@ public class PointField extends Field {
             System.out.println("PointField.Accept() returns true");             //ha nincs rajta semmi
             return true;
         }
-        return false;
+        return false; 
     }
 }
