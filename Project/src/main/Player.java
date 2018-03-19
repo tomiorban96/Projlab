@@ -6,12 +6,17 @@ public class Player extends Thing{
 	 */
     private int points;
     /**
+	 * A játékos játékban van-e.
+	 */
+    private boolean alive;
+    /**
 	 * A Player a játékos inputjára mozog. Ha nem létező (null) Field-re mozogna akkor visszatér anélkül hogy bármi történne.
 	 * Ha nem null a Field akkor meghívja az Accept függvényét. Ha az true-val tér vissza akkor meghívja az eddigi Field-nek
 	 * a Remove függvényét, így teljesen átkerül a következő Field-re.
 	 *  Ha az Accept visszatérése false akkor nem hívja meg a Remove-ot.
 	 *  @param d az az irány amerre mozog
 	 */
+    
     public void Move(Direction d){
     	System.out.println("Player.Move(d)");
         Field neighbor=field.GetNeighbor(d);
@@ -35,11 +40,16 @@ public class Player extends Thing{
         
     }
     /**
-	 * A Player meghal, vagyis eltűnik a pályáról. Meghívja a field Remove függvényét, anélkül hogy először áthelyezné magát
-	 *  másvhova. Ezzel kikerül a játékból.
+	 * A Player meghal, vagyis eltűnik a pályáról. 
+	 * Meghívja a field Remove függvényét, anélkül hogy először áthelyezné magát
+	 *  másvhova.Az alive-ot false-ra állítja.
 	 */
     public void Die(){
     	System.out.println("Player.Die()");
+    	alive=false;
+    	if (game.CheckEndGame()){
+		game.EndGame();
+	}
     	field.Remove(this);
     	System.out.println("Player.Die() returns");
     }
@@ -85,11 +95,26 @@ public class Player extends Thing{
         
     }
     /**
+	 * @param points the points to set
+	 */
+	public void setPoints(int points) {
+		this.points = points;
+	}
+	/**
+	 * @param alive the alive to set
+	 */
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
+	/**
 	 * Megnöveli a játékos pontszámát eggyel (1).
 	 */
     public void AddPoint(){
     	System.out.println("Player.AddPoint()");
     	System.out.println("Player.Addpoint() returns");
         points++;
-    } 
+    }
+    public boolean GetAlive() {
+    	return alive;
+    }
 }

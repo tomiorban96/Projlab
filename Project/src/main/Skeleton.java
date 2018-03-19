@@ -54,19 +54,21 @@ public class Skeleton {
 
                                     switch (sc.nextInt()){
                                         case 1: //2.4.1.1
-                                            //Todo: Játékos mozog kapcsolóra, ami üres, és a hozzá tartozó lyukon nincs semmi
+                                            
+                                        	PlayerOntoEmptySwitch();
                                             break;
 
                                         case 2: //2.4.1.2
                                             System.out.println("Utolsó aktív láda? (Y/N)");
                                             boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                            //Todo: Játékos mozog kapcsolóra, ami üres, és a hozzá tartozó lyukon láda áll
+                                            PlayerOntoEmptySwitchKillBox(lastActiveBox);
+                                            
                                             break;
 
                                         case 3: //2.4.1.3
                                             System.out.println("Utolsó aktív játékos? (Y/N)");
                                             boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                            //Todo: Játékos mozog kapcsolóra, ami üres, és a hozzá tartozó lyukon játékos áll
+                                            PlayerOntoEmptySwitchKillPlayer(lastActivePlayer2);
                                             break;
 
                                         default:
@@ -79,19 +81,20 @@ public class Skeleton {
                                     printSubMenu();
                                     switch (sc.nextInt()){
                                         case 1: //2.4.2.1
-                                            //Todo: Játékos mozog kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon nincs semmi
+                                        	PlayerOntoSwitchWithBox();
+                                            
                                             break;
 
                                         case 2: //2.4.2.2
                                             System.out.println("Utolsó aktív láda? (Y/N)");
                                             boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                            //Todo: Játékos mozog kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon láda áll
+                                            PlayerOntoSwitchWithBoxKillBox(lastActiveBox);
                                             break;
 
                                         case 3: //2.4.2.3
                                             System.out.println("Utolsó aktív játékos? (Y/N)");
                                             boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                            //Todo: Játékos mozog kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon játékos áll
+                                            PlayerOntoSwitchWithBoxKillPlayer();
                                             break;
 
                                         default:
@@ -103,19 +106,20 @@ public class Skeleton {
                                     printSubMenu();
                                     switch (sc.nextInt()){
                                         case 1: //2.4.3.1
-                                            //Todo: Játékos mozog kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon nincs semmi
+                                        	PlayerOntoSwitchWithPlayer();
                                             break;
 
                                         case 2: //2.4.3.2
                                             System.out.println("Utolsó aktív láda? (Y/N)");
                                             boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                            //Todo: Játékos mozog kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon láda áll
+                                            PlayerOntoSwitchWithPlayerKillBox();
                                             break;
 
                                         case 3: //2.4.3.3
                                             System.out.println("Utolsó aktív játékos? (Y/N)");
                                             boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                            //Todo: Játékos mozog kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon játékos áll
+                                            PlayerOntoSwitchWithPlayerKillPlayer();
+
                                             break;
 
                                         default:
@@ -631,7 +635,222 @@ public class Skeleton {
 
     }
 
-    private static boolean getYesOrNo(char choice) throws Exception {
+    private static void PlayerOntoSwitchWithPlayerKillPlayer() {
+    	Player p=new Player();
+		Field f=new Field();
+		Field f2=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Player p3=new Player();
+		Player p2=new Player();
+		p2.SetField(s);
+		s.setMovable(p2);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		h.setMovable(p3);
+		p3.SetField(h);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);	
+    	p.Move(d);					
+	}
+
+	private static void PlayerOntoSwitchWithPlayerKillBox() {
+    	Player p=new Player();
+		Field f=new Field();
+		Field f2=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Box b=new Box();
+		Player p2=new Player();
+		p2.SetField(s);
+		s.setMovable(p2);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		h.setMovable(b);
+		b.SetField(h);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);	
+    	p.Move(d);			
+	}
+
+	private static void PlayerOntoSwitchWithPlayer() {
+    	Player p=new Player();
+		Field f=new Field();
+		Field f2=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Box b=new Box();
+		Player p2=new Player();
+		p2.SetField(s);
+		s.setMovable(p2);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);	
+    	p.Move(d);	
+	}
+
+	private static void PlayerOntoSwitchWithBoxKillPlayer() {
+    	Player p=new Player();
+		Field f=new Field();
+		Field f2=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Box b=new Box();
+		Player p2=new Player();
+		b.SetField(s);
+		s.setMovable(b);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		h.setMovable(p2);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);	
+    	p.Move(d);	
+	}
+
+	private static void PlayerOntoSwitchWithBoxKillBox(boolean lastActiveBox) {
+    	Player p=new Player();
+		Field f=new Field();
+		Field f2=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Box b=new Box();
+		Box b2=new Box();
+		b.SetField(s);
+		s.setMovable(b);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		h.setMovable(b2);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);
+    	
+    	
+		p.Move(d);				
+	}
+
+	private static void PlayerOntoSwitchWithBox() {
+    	Player p=new Player();
+		Field f=new Field();
+		Field f2=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Box b=new Box();
+		b.SetField(s);
+		s.setMovable(b);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);
+    	
+    	
+		p.Move(d);		
+	}
+
+	private static void PlayerOntoEmptySwitchKillPlayer(boolean lastActivePlayer2) {
+    	Player p=new Player();
+		Field f=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Player p2=new Player();
+		p2.SetField(h);
+		h.setMovable(p2);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);
+		p.Move(d);		
+	}
+
+	private static void PlayerOntoEmptySwitchKillBox(boolean lastActiveBox) {
+    	Player p=new Player();
+		Field f=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Box b=new Box();
+		b.SetField(h);
+		h.setMovable(b);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);
+		p.Move(d);
+	}
+
+	private static void PlayerOntoEmptySwitch() {
+		// TODO Auto-generated method stub
+		Player p=new Player();
+		Field f=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		s.setHole(h);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, s);
+    	f.setNeighbors(hash2);
+    	s.setNeighbors(hash);
+		p.Move(d);
+		}
+
+	private static boolean getYesOrNo(char choice) throws Exception {
 
         if (choice == 'Y')
             return true;
@@ -682,4 +901,68 @@ public class Skeleton {
         f2.SetMovable(b);
         p.Move(Direction.Down);
     }
+     private static void Jatekosuresre(){
+    	Player p=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	Field f1=new Field();
+    	h.put(Direction.Down, f1);
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	f2.setNeighbors(h);
+    	p.setField(f2);
+    	p.Move(Direction.Down);
+    }
+    private static void Jatekosfalnak(){
+    	Player p=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	Wall w1=new Wall();
+    	h.put(Direction.Down, w1);
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	p.setField(f2);
+    	p.Move(Direction.Down);
+    }
+    private static void Jatekoslyukra(boolean isOpen, boolean LastActivePlayer) {
+    	ArrayList<Player> players=new ArrayList<Player>();
+    	Player p=new Player();
+    	Player p2=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	Hole h1=new Hole();
+    	h1.SetOpen(false);
+    	h.put(Direction.Down, h1);
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	f2.setNeighbors(h);
+    	p.setField(f2);
+    	players.add(p);
+    	if (isOpen) {
+    		h1.SetOpen(true);
+    	}
+    	if (LastActivePlayer) {
+    		players.add(p2);
+    	}
+    	Game game=new Game(players);
+    	p.setGame(game);
+    	p2.setGame(game);
+    	p.Move(Direction.Down);
+    }
+    private static void Jatekospontszerzore(boolean fieldCompleted) {
+    	Player p=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	PointField pf=new PointField();
+    	Box b=new Box();
+    	
+    	h.put(Direction.Down, pf);
+    	if (fieldCompleted) {
+    		pf.setCompleted(true);
+    		pf.setMovable(b);
+    	}
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	f2.setNeighbors(h);
+    	p.setField(f2);
+    	p.Move(Direction.Down);
+    	
+    }
+    
 }
