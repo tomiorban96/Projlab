@@ -36,7 +36,6 @@ public class Box extends Thing{
 			return true;
 		}
 		else {
-			Die();
 			System.out.println("Player.Pushedby(p,t,d) returns");
 			return true;
 		}
