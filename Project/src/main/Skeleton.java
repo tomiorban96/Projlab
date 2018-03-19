@@ -862,4 +862,68 @@ public class Skeleton {
     private static void printSubMenu(){
         System.out.print("1. ...nincs semmi\n2. ...láda áll\n3. ...játékos áll\n$ ");
     }
+     private static void Jatekosuresre(){
+    	Player p=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	Field f1=new Field();
+    	h.put(Direction.Down, f1);
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	f2.setNeighbors(h);
+    	p.setField(f2);
+    	p.Move(Direction.Down);
+    }
+    private static void Jatekosfalnak(){
+    	Player p=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	Wall w1=new Wall();
+    	h.put(Direction.Down, w1);
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	p.setField(f2);
+    	p.Move(Direction.Down);
+    }
+    private static void Jatekoslyukra(boolean isOpen, boolean LastActivePlayer) {
+    	ArrayList<Player> players=new ArrayList<Player>();
+    	Player p=new Player();
+    	Player p2=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	Hole h1=new Hole();
+    	h1.SetOpen(false);
+    	h.put(Direction.Down, h1);
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	f2.setNeighbors(h);
+    	p.setField(f2);
+    	players.add(p);
+    	if (isOpen) {
+    		h1.SetOpen(true);
+    	}
+    	if (LastActivePlayer) {
+    		players.add(p2);
+    	}
+    	Game game=new Game(players);
+    	p.setGame(game);
+    	p2.setGame(game);
+    	p.Move(Direction.Down);
+    }
+    private static void Jatekospontszerzore(boolean fieldCompleted) {
+    	Player p=new Player();
+    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
+    	PointField pf=new PointField();
+    	Box b=new Box();
+    	
+    	h.put(Direction.Down, pf);
+    	if (fieldCompleted) {
+    		pf.setCompleted(true);
+    		pf.setMovable(b);
+    	}
+    	Field f2=new Field();
+    	f2.setMovable(p);
+    	f2.setNeighbors(h);
+    	p.setField(f2);
+    	p.Move(Direction.Down);
+    	
+    }
+    
 }

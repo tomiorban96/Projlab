@@ -47,7 +47,9 @@ public class Player extends Thing{
     public void Die(){
     	System.out.println("Player.Die()");
     	alive=false;
-    	game.CheckEndGame();
+    	if (game.CheckEndGame()){
+		game.EndGame();
+	}
     	field.Remove(this);
     	System.out.println("Player.Die() returns");
     }
