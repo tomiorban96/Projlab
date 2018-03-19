@@ -1531,5 +1531,37 @@ public class Skeleton {
     	p.Move(Direction.Down);
     	
     }
+    private static void JatekosLadatLyukra(boolean isOpen, boolean lastActiveBox){
+    	 Game game=new Game();
+    	 Field f1 = new Field();
+         Field f2 = new Field();
+         Hole h = new Hole();
+         Player p = new Player();
+         ArrayList<Player> players=new ArrayList<Player>();
+         players.add(p);
+         Box b = new Box();
+         Hashtable <Direction,Field> h1=new Hashtable<>();
+         Hashtable <Direction,Field> h2=new Hashtable<>();
+         h1.put(Direction.Down, f2);
+         h2.put(Direction.Down, h);
+         f1.setNeighbors(h1);
+         f2.setNeighbors(h2);
+         p.setField(f1);
+         b.setField(f2);
+         f2.setMovable(b);
+         f1.setMovable(p);
+         h.SetOpen(false);
+         if (isOpen) {
+       	  h.SetOpen(true);
+         }
+         p.setAlive(true);
+         game.setActiveBoxes(10);
+         if (lastActiveBox) {
+        	 game.setActiveBoxes(1);
+         }
+         b.setGame(game);
+         game.setPlayers(players);
+         p.Move(Direction.Down);
+    }
     
 }
