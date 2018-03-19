@@ -20,8 +20,8 @@ public class Skeleton {
 
             switch (sc.nextInt()){
                 case 1: //1
-                    //Todo: Játék indítása
-                    break;
+                	NewGameStarts();
+                	break;
 
                 case 2: //2
                     System.out.print("1. ...üres mezőre\n2. ...falnak\n3. ...lyukra\n4. ...kapcsolóra, ami...\n5. ...pontszerző mezőre\n$ ");
@@ -430,7 +430,13 @@ public class Skeleton {
 
     }
 
-    private static void PlayerMovesOntoHole(boolean isOpen, boolean lastActivePlayer) {
+    private static void NewGameStarts() {
+		Game g=new Game();
+    	g.StartGame();
+		
+	}
+
+	private static void PlayerMovesOntoHole(boolean isOpen, boolean lastActivePlayer) {
     	Game g=new Game();
     	Player p=new Player();
 		Field f=new Field();
