@@ -52,4 +52,7 @@ public abstract class Thing {
      public void SetField(Field field) {
     	this.field=field;
     }
+    public void SetGame(Game game){
+        this.game = game;
+    }
 }

@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 
 public class Field {
@@ -120,6 +121,13 @@ public class Field {
 	}
 	
 
+    public void SetNeighbors(Hashtable<Direction,Field> neighbors){
+        this.neighbors = neighbors;
+    }
+
+    public void SetMovable(Thing movable) {
+        this.movable = movable;
+    }
     
     
 }
