@@ -7,7 +7,7 @@ public class Wall extends Field{
      * @param pusher a játékos aki p-t tolja (pusher==p lehet)
      * @return false
      */
-    public boolean Accept(Player p, Player pusher){
+    public boolean Accept(Player p, Player pusher, Direction d){
         System.out.println("Wall.Accept()");
         System.out.println("Wall.Accept() returns false");
         return false;
@@ -18,7 +18,7 @@ public class Wall extends Field{
      * @param pusher a játékos aki b-t tolja
      * @return false
      */
-    public boolean Accept(Box b, Player pusher){
+    public boolean Accept(Box b, Player pusher, Direction d){
         System.out.println("Wall.Accept()");
         System.out.println("Wall.Accept() returns false");
         return false;
