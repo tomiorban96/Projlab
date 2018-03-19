@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -263,119 +264,8 @@ public class Skeleton {
                             break;
 
                         case 2: //3.2
-                            System.out.print("1. ...üres mezőre\n2. ...falnak\n3. ...lyukra\n4. ...kapcsolóra, ami...\n5. ...pontszerző mezőre\n$ ");
-                            switch (sc.nextInt()){
-                                case 1: //3.2.1
-                                    //Todo: Játékos tol játékost üres mezőre
-                                    break;
-
-                                case 2: //3.2.2
-                                    //Todo: Játékos tol játékost falnak
-                                    break;
-
-                                case 3: //3.2.3
-                                    System.out.println("Lyuk nyitva van? (Y/N)");
-
-                                    boolean isOpen = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-
-                                    boolean lastActivePlayer = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-
-                                    //Todo: Játékos tol játékost lyukra, isOpen és lastActivePlayer változóktól függően
-
-                                    break;
-
-                                case 4: //3.2.4
-                                    System.out.print("1. ...üres, és a hozzá tartozó lyukon...\n2. ...foglalt (láda), és a hozzá tartozó lyukon…\n3. ...foglalt (munkás), és a hozzá tartozó lyukon...\n$ ");
-                                    switch (sc.nextInt()){
-                                        case 1: //3.2.4.1
-                                            printSubMenu();
-
-                                            switch (sc.nextInt()){
-                                                case 1: //3.2.4.1.1
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami üres, és a hozzá tartozó lyukon nincs semmi
-                                                    break;
-
-                                                case 2: //3.2.4.1.2
-                                                    System.out.println("Utolsó aktív láda? (Y/N)");
-                                                    boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami üres, és a hozzá tartozó lyukon láda áll
-                                                    break;
-
-                                                case 3: //3.2.4.1.3
-                                                    System.out.println("Utolsó aktív játékos? (Y/N)");
-                                                    boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami üres, és a hozzá tartozó lyukon játékos áll
-                                                    break;
-
-                                                default:
-                                                    System.out.println("Nem létező menüpont!");
-                                            }
-
-                                            break;
-
-                                        case 2: //3.2.4.2
-                                            printSubMenu();
-                                            switch (sc.nextInt()){
-                                                case 1: //3.2.4.2.1
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon nincs semmi
-                                                    break;
-
-                                                case 2: //3.2.4.2.2
-                                                    System.out.println("Utolsó aktív láda? (Y/N)");
-                                                    boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon láda áll
-                                                    break;
-
-                                                case 3: //3.2.4.2.3
-                                                    System.out.println("Utolsó aktív játékos? (Y/N)");
-                                                    boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon játékos áll
-                                                    break;
-
-                                                default:
-                                                    System.out.println("Nem létező menüpont!");
-                                            }
-                                            break;
-
-                                        case 3: //3.2.4.3
-                                            printSubMenu();
-                                            switch (sc.nextInt()){
-                                                case 1: //3.2.4.3.1
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon nincs semmi
-                                                    break;
-
-                                                case 2: //3.2.4.3.2
-                                                    System.out.println("Utolsó aktív láda? (Y/N)");
-                                                    boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon láda áll
-                                                    break;
-
-                                                case 3: //3.2.4.3.3
-                                                    System.out.println("Utolsó aktív játékos? (Y/N)");
-                                                    boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol játékost kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon játékos áll
-                                                    break;
-
-                                                default:
-                                                    System.out.println("Nem létező menüpont!");
-                                            }
-                                            break;
-
-                                        default:
-                                            System.out.println("Nem létező menüpont!");
-                                    }
-                                    break;
-
-                                case 5: //3.2.5
-                                    System.out.println("Mező teljesítve? (Y/N)");
-                                    boolean fieldCompleted = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                    //Todo: Játékos játékost ládát pontszerző mezőre
-
-                                default:
-                                    System.out.println("Nem létező menüpont!");
-                            }
-                            break;
-
+                        	PlayerPushPlayer();
+                        	break;
                         case 3: //3.3
                             System.out.print("1. ...üres mezőre\n2. ...falnak\n3. ...lyukra\n4. ...kapcsolóra, ami...\n5. ...pontszerző mezőre\n$ ");
                             switch (sc.nextInt()){
@@ -634,7 +524,31 @@ public class Skeleton {
 
     }
 
-    private static void PlayerOntoSwitchWithPlayerKillPlayer() {
+    private static void PlayerPushPlayer() {
+    	Player p=new Player();
+		Field f=new Field();
+		Field f2=new Field();
+		Field f3=new Field();
+		Player p2=new Player();
+		p2.SetField(f2);
+		f3.setMovable(p2);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, f3);
+    	Hashtable <Direction,Field> hash3=new Hashtable<Direction,Field>();
+    	hash3.put(Direction.Left, f3);
+    	hash.put(Direction.Right, f2);
+    	f.setNeighbors(hash2);
+    	f3.setNeighbors(hash);
+    	f2.setNeighbors(hash3);
+    	p.Move(d);					
+	}
+
+	private static void PlayerOntoSwitchWithPlayerKillPlayer() {
     	Player p=new Player();
 		Field f=new Field();
 		Field f2=new Field();
@@ -883,30 +797,7 @@ public class Skeleton {
     	p.setField(f2);
     	p.Move(Direction.Down);
     }
-    private static void Jatekoslyukra(boolean isOpen, boolean LastActivePlayer) {
-    	ArrayList<Player> players=new ArrayList<Player>();
-    	Player p=new Player();
-    	Player p2=new Player();
-    	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
-    	Hole h1=new Hole();
-    	h1.SetOpen(false);
-    	h.put(Direction.Down, h1);
-    	Field f2=new Field();
-    	f2.setMovable(p);
-    	f2.setNeighbors(h);
-    	p.setField(f2);
-    	players.add(p);
-    	if (isOpen) {
-    		h1.SetOpen(true);
-    	}
-    	if (LastActivePlayer) {
-    		players.add(p2);
-    	}
-    	Game game=new Game(players);
-    	p.setGame(game);
-    	p2.setGame(game);
-    	p.Move(Direction.Down);
-    }
+    
     private static void Jatekospontszerzore(boolean fieldCompleted) {
     	Player p=new Player();
     	Hashtable <Direction,Field> h=new Hashtable<Direction,Field>();
