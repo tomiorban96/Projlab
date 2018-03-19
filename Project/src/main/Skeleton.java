@@ -356,101 +356,37 @@ public class Skeleton {
                             System.out.print("1. ...üres mezőre\n2. ...falnak\n3. ...lyukra\n4. ...kapcsolóra, ami...\n5. ...pontszerző mezőre\n$ ");
                             switch (sc.nextInt()){
                                 case 1: //3.4.1
-                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort üres mezőre
+                                	PlayerPushesManyThings();
+                                    
                                     break;
 
                                 case 2: //3.4.2
-                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort falnak
+                                	PlayerPushesManyThingsIntoWall();
                                     break;
 
                                 case 3: //3.4.3
                                     System.out.println("Lyuk nyitva van? (Y/N)");
 
                                     boolean isOpen = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
+                                    PlayerPushesManyThingsIntoHole(isOpen);
 
-                                    System.out.println("Utolsó aktív? (Y/N)");
-
-                                    boolean last = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-
-                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort lyukra, isOpen és last változóktól függően
-
+                                    
                                     break;
 
                                 case 4: //3.4.4
                                     System.out.print("1. ...üres, és a hozzá tartozó lyukon...\n2. ...foglalt (láda), és a hozzá tartozó lyukon…\n3. ...foglalt (munkás), és a hozzá tartozó lyukon...\n$ ");
                                     switch (sc.nextInt()){
                                         case 1: //3.4.4.1
-                                            printSubMenu();
-
-                                            switch (sc.nextInt()){
-                                                case 1: //3.4.4.1.1
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami üres, és a hozzá tartozó lyukon nincs semmi
-                                                    break;
-
-                                                case 2: //3.4.4.1.2
-                                                    System.out.println("Utolsó aktív láda? (Y/N)");
-                                                    boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami üres, és a hozzá tartozó lyukon láda áll
-                                                    break;
-
-                                                case 3: //3.4.4.1.3
-                                                    System.out.println("Utolsó aktív játékos? (Y/N)");
-                                                    boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami üres, és a hozzá tartozó lyukon játékos áll
-                                                    break;
-
-                                                default:
-                                                    System.out.println("Nem létező menüpont!");
-                                            }
+                                            PlayerPushesManyThingsOntoSwitch();
 
                                             break;
 
                                         case 2: //3.4.4.2
-                                            printSubMenu();
-                                            switch (sc.nextInt()){
-                                                case 1: //3.4.4.2.1
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon nincs semmi
-                                                    break;
-
-                                                case 2: //3.4.4.2.2
-                                                    System.out.println("Utolsó aktív láda? (Y/N)");
-                                                    boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon láda áll
-                                                    break;
-
-                                                case 3: //3.4.4.2.3
-                                                    System.out.println("Utolsó aktív játékos? (Y/N)");
-                                                    boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami foglalt (láda), és a hozzá tartozó lyukon játékos áll
-                                                    break;
-
-                                                default:
-                                                    System.out.println("Nem létező menüpont!");
-                                            }
+                                        	PlayerPushesManyThingsOntoSwitchWithBox();
                                             break;
 
                                         case 3: //3.4.4.3
-                                            printSubMenu();
-                                            switch (sc.nextInt()){
-                                                case 1: //3.4.4.3.1
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon nincs semmi
-                                                    break;
-
-                                                case 2: //3.4.4.3.2
-                                                    System.out.println("Utolsó aktív láda? (Y/N)");
-                                                    boolean lastActiveBox = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon láda áll
-                                                    break;
-
-                                                case 3: //3.4.4.3.3
-                                                    System.out.println("Utolsó aktív játékos? (Y/N)");
-                                                    boolean lastActivePlayer2 = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort kapcsolóra, ami foglalt (munkás), és a hozzá tartozó lyukon játékos áll
-                                                    break;
-
-                                                default:
-                                                    System.out.println("Nem létező menüpont!");
-                                            }
+                                            PlayerPushesManyThingsOntoSwitchWithPlayer();
                                             break;
 
                                         default:
@@ -461,7 +397,7 @@ public class Skeleton {
                                 case 5: //3.4.5
                                     System.out.println("Mező teljesítve? (Y/N)");
                                     boolean fieldCompleted = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
-                                    //Todo: Játékos tol ládákból és játékosokból vegyesen álló sort pontszerző mezőre
+                                    PlayerPushesManyThingsOntoPointField(fieldCompleted);
 
                                 default:
                                     System.out.println("Nem létező menüpont!");
@@ -481,8 +417,8 @@ public class Skeleton {
                     break;
 
                 case 5: //5
-                    //Todo: Kilépés
-                    break;
+                    return;
+                   
 
                 default:
                     System.out.println("Nem létező menüpont!");
@@ -494,7 +430,264 @@ public class Skeleton {
 
     }
 
-    private static void PlayerPushesManyBoxesOntoPointField(boolean fieldCompleted) {
+    private static void PlayerPushesManyThingsOntoPointField(boolean fieldCompleted) {
+    	Player p=new Player();
+    	Field f=new Field();
+		Field f2=new Field();
+		Field f3=new Field();
+		PointField pf=new PointField();
+		pf.setCompleted(fieldCompleted);
+		Direction d=Direction.Right;
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, f3);
+    	Hashtable <Direction,Field> hash3=new Hashtable<Direction,Field>();
+    	hash3.put(Direction.Left, f3);
+    	hash3.put(Direction.Right, pf);
+    	hash.put(Direction.Right, f2);
+    	Hashtable <Direction,Field> hash4=new Hashtable<Direction,Field>();
+    	hash4.put(Direction.Left, f2);
+    	f.setNeighbors(hash2);
+    	f3.setNeighbors(hash);
+    	f2.setNeighbors(hash3);
+    	pf.setNeighbors(hash4);
+    	Box b1=new Box();
+    	Player p4=new Player();
+    	f.SetMovable(p);
+    	p.SetField(f);
+    	f3.setMovable(b1);
+    	b1.setField(f3);
+    	f2.setMovable(p4);
+    	p4.setField(f2);
+    	p.Move(d);
+		
+	}
+
+	private static void PlayerPushesManyThingsOntoSwitchWithBox() {
+    	Player p=new Player();
+    	Field f=new Field();
+		Field f2=new Field();
+		Field f3=new Field();
+		Field f4=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		s.setHole(h);
+		Box b4=new Box();
+		h.SetOpen(false);
+		Direction d=Direction.Right;
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, f3);
+    	Hashtable <Direction,Field> hash3=new Hashtable<Direction,Field>();
+    	hash3.put(Direction.Left, f3);
+    	hash3.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	Hashtable <Direction,Field> hash4=new Hashtable<Direction,Field>();
+    	hash4.put(Direction.Left, f2);
+    	hash4.put(Direction.Right, f4);
+    	Hashtable <Direction,Field> hash5=new Hashtable<Direction,Field>();
+    	hash5.put(Direction.Left, s);
+    	f.setNeighbors(hash2);
+    	f3.setNeighbors(hash);
+    	f2.setNeighbors(hash3);
+    	s.setNeighbors(hash4);
+    	f4.setNeighbors(hash5);
+    	Box b1=new Box();
+    	Player p4=new Player();
+    	f.SetMovable(p);
+    	p.SetField(f);
+    	f3.setMovable(b1);
+    	b1.setField(f3);
+    	f2.setMovable(p4);
+    	p4.setField(f2);
+    	s.setMovable(b4);
+    	b4.setField(s);
+    	p.Move(d);
+		
+	}
+
+	private static void PlayerPushesManyThingsOntoSwitchWithPlayer() {
+    	Player p=new Player();
+    	Field f=new Field();
+		Field f2=new Field();
+		Field f3=new Field();
+		Field f4=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		s.setHole(h);
+		Player p2=new Player();
+		h.SetOpen(false);
+		Direction d=Direction.Right;
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, f3);
+    	Hashtable <Direction,Field> hash3=new Hashtable<Direction,Field>();
+    	hash3.put(Direction.Left, f3);
+    	hash3.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	Hashtable <Direction,Field> hash4=new Hashtable<Direction,Field>();
+    	hash4.put(Direction.Left, f2);
+    	hash4.put(Direction.Right, f4);
+    	Hashtable <Direction,Field> hash5=new Hashtable<Direction,Field>();
+    	hash5.put(Direction.Left, s);
+    	f.setNeighbors(hash2);
+    	f3.setNeighbors(hash);
+    	f2.setNeighbors(hash3);
+    	s.setNeighbors(hash4);
+    	f4.setNeighbors(hash5);
+    	Box b1=new Box();
+    	Player p4=new Player();
+    	f.SetMovable(p);
+    	p.SetField(f);
+    	f3.setMovable(b1);
+    	b1.setField(f3);
+    	f2.setMovable(p4);
+    	p4.setField(f2);
+    	s.setMovable(p2);
+    	p2.setField(s);
+    	p.Move(d);					
+		
+	}
+
+	private static void PlayerPushesManyThingsOntoSwitch() {
+    	Player p=new Player();
+    	Field f=new Field();
+		Field f2=new Field();
+		Field f3=new Field();
+		Switch s=new Switch();
+		Hole h=new Hole();
+		s.setHole(h);
+		Direction d=Direction.Right;
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, f3);
+    	Hashtable <Direction,Field> hash3=new Hashtable<Direction,Field>();
+    	hash3.put(Direction.Left, f3);
+    	hash3.put(Direction.Right, s);
+    	hash.put(Direction.Right, f2);
+    	Hashtable <Direction,Field> hash4=new Hashtable<Direction,Field>();
+    	hash4.put(Direction.Left, f2);
+    	f.setNeighbors(hash2);
+    	f3.setNeighbors(hash);
+    	f2.setNeighbors(hash3);
+    	s.setNeighbors(hash4);
+    	Box b1=new Box();
+    	Player p4=new Player();
+    	f.SetMovable(p);
+    	p.SetField(f);
+    	f3.setMovable(b1);
+    	b1.setField(f3);
+    	f2.setMovable(p4);
+    	p4.setField(f2);
+    	p.Move(d);
+		
+	}
+
+	private static void PlayerPushesManyThingsIntoHole(boolean isOpen) {
+    	Player p=new Player();
+    	Field f=new Field();
+		Field f2=new Field();
+		Field f3=new Field();
+		Hole h=new Hole();
+		h.SetOpen(isOpen);
+		Direction d=Direction.Right;
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, f3);
+    	Hashtable <Direction,Field> hash3=new Hashtable<Direction,Field>();
+    	hash3.put(Direction.Left, f3);
+    	hash3.put(Direction.Right, h);
+    	hash.put(Direction.Right, f2);
+    	Hashtable <Direction,Field> hash4=new Hashtable<Direction,Field>();
+    	hash4.put(Direction.Left, f2);
+    	f.setNeighbors(hash2);
+    	f3.setNeighbors(hash);
+    	f2.setNeighbors(hash3);
+    	h.setNeighbors(hash4);
+    	Box b1=new Box();
+    	Player p4=new Player();
+    	f.SetMovable(p);
+    	p.SetField(f);
+    	f3.setMovable(b1);
+    	b1.setField(f3);
+    	f2.setMovable(p4);
+    	p4.setField(f2);
+    	p.Move(d);
+		
+	}
+
+	private static void PlayerPushesManyThingsIntoWall() {
+    	Player p=new Player();
+    	Field f=new Field();
+		Field f2=new Field();
+		Field f3=new Field();
+		Wall w=new Wall();
+		Direction d=Direction.Right;
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, f3);
+    	Hashtable <Direction,Field> hash3=new Hashtable<Direction,Field>();
+    	hash3.put(Direction.Left, f3);
+    	hash3.put(Direction.Right, w);
+    	hash.put(Direction.Right, f2);
+    	Hashtable <Direction,Field> hash4=new Hashtable<Direction,Field>();
+    	hash4.put(Direction.Left, f2);
+    	f.setNeighbors(hash2);
+    	f3.setNeighbors(hash);
+    	f2.setNeighbors(hash3);
+    	w.setNeighbors(hash4);
+    	Box b1=new Box();
+    	Player p4=new Player();
+    	f.SetMovable(p);
+    	p.SetField(f);
+    	f3.setMovable(b1);
+    	b1.setField(f3);
+    	f2.setMovable(p4);
+    	p4.setField(f2);
+    	p.Move(d);
+		
+	}
+
+	private static void PlayerPushesManyThings() {
+    	Player p=new Player();
+    	Field f=new Field();
+		Field f2=new Field();
+		Field f3=new Field();
+		Field f4=new Field();
+		Direction d=Direction.Right;
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, f3);
+    	Hashtable <Direction,Field> hash3=new Hashtable<Direction,Field>();
+    	hash3.put(Direction.Left, f3);
+    	hash3.put(Direction.Right, f4);
+    	hash.put(Direction.Right, f2);
+    	Hashtable <Direction,Field> hash4=new Hashtable<Direction,Field>();
+    	hash4.put(Direction.Left, f2);
+    	f.setNeighbors(hash2);
+    	f3.setNeighbors(hash);
+    	f2.setNeighbors(hash3);
+    	f4.setNeighbors(hash4);
+    	Box b1=new Box();
+    	Player p4=new Player();
+    	f.SetMovable(p);
+    	p.SetField(f);
+    	f3.setMovable(b1);
+    	b1.setField(f3);
+    	f2.setMovable(p4);
+    	p4.setField(f2);
+    	p.Move(d);
+		
+	}
+
+	private static void PlayerPushesManyBoxesOntoPointField(boolean fieldCompleted) {
     	Player p=new Player();
     	Field f=new Field();
 		Field f2=new Field();
