@@ -1563,5 +1563,25 @@ public class Skeleton {
          game.setPlayers(players);
          p.Move(Direction.Down);
     }
+    private static void JatekosLadatUresKapcsolora(){
+    	 Field f1=new Field();
+    	 Field f2=new Field();
+    	 Switch s=new Switch();
+    	 Hole h=new Hole();
+    	 Hashtable <Direction,Field> h1=new Hashtable<>();
+    	 Hashtable <Direction,Field> h2=new Hashtable<>();
+    	 h1.put(Direction.Down, s);
+    	 f2.setNeighbors(h1);
+    	 h2.put(Direction.Down, f2);
+    	 f1.setNeighbors(h2);
+    	 Player p=new Player();
+    	 p.setField(f1);
+    	 f1.setMovable(p);
+    	 Box b=new Box();
+    	 b.setField(f2);
+    	 f2.setMovable(b);
+    	 s.setHole(h);
+    	 p.Move(Direction.Down);
+    }
     
 }
