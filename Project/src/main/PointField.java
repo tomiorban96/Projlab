@@ -10,6 +10,30 @@ public class PointField extends Field {
 	 */
     private Game game;
     /**
+	 * @return the completed
+	 */
+	public boolean isCompleted() {
+		return completed;
+	}
+	/**
+	 * @param completed the completed to set
+	 */
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+	/**
+	 * @return the game
+	 */
+	public Game getGame() {
+		return game;
+	}
+	/**
+	 * @param game the game to set
+	 */
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	/**
 	* Ha a movable null, felveszi a p:Player játékost a movable tagváltozónak. Ekkor true-t ad vissza.
     * Ha a movable nem null akkor először meghívja a movable pushedBy(pusher,p,d) függvényét. Ha az true-val tér vissza
     * akkor elhelyezi a p-t a movable tagváltozóban. Ha false-al tér vissza akkor nem helyezi el p-t és false-al tér vissza.

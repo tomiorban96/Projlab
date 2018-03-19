@@ -82,6 +82,18 @@ public class Field {
         }
     }
     /**
+	 * @return the movable
+	 */
+	public Thing getMovable() {
+		return movable;
+	}
+	/**
+	 * @param movable the movable to set
+	 */
+	public void setMovable(Thing movable) {
+		this.movable = movable;
+	}
+	/**
      * Kiveszi a null-al teszi egyenlővé a moveable-t, ezzel kivéve azt a mezőröl.
      * @param t az a thing amit ki kell venni a mezőröl
      */
@@ -100,6 +112,13 @@ public class Field {
        System.out.println("Field.GetNeighbor() returns");
        return neighbors.get(d);
     }
+	/**
+	 * @param neighbors the neighbors to set
+	 */
+	public void setNeighbors(Hashtable<Direction, Field> neighbors) {
+		this.neighbors = neighbors;
+	}
+	
 
     
     

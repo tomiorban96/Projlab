@@ -10,6 +10,30 @@ public abstract class Thing {
      */
     protected Game game;
     /**
+	 * @return the field
+	 */
+	public Field getField() {
+		return field;
+	}
+	/**
+	 * @param field the field to set
+	 */
+	public void setField(Field field) {
+		this.field = field;
+	}
+	/**
+	 * @return the game
+	 */
+	public Game getGame() {
+		return game;
+	}
+	/**
+	 * @param game the game to set
+	 */
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	/**
      * Absztrakt függvény amit a leszármazottak valósítanak meg
      */
     abstract void Die(); 

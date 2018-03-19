@@ -17,6 +17,42 @@ public class Game {
      */
     private int ActiveBoxes;
     /**
+	 * @return the board
+	 */
+	public Board getBoard() {
+		return board;
+	}
+	/**
+	 * @param board the board to set
+	 */
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+	/**
+	 * @return the players
+	 */
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+	/**
+	 * @param players the players to set
+	 */
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
+	}
+	/**
+	 * @return the activeBoxes
+	 */
+	public int getActiveBoxes() {
+		return ActiveBoxes;
+	}
+	/**
+	 * @param activeBoxes the activeBoxes to set
+	 */
+	public void setActiveBoxes(int activeBoxes) {
+		ActiveBoxes = activeBoxes;
+	}
+	/**
      * Elindítja a játékot.
      */
     public void StartGame(){

@@ -6,6 +6,18 @@ public class Switch extends Field {
 	 */
     private Hole hole;
     /**
+	 * @return the hole
+	 */
+	public Hole getHole() {
+		return hole;
+	}
+	/**
+	 * @param hole the hole to set
+	 */
+	public void setHole(Hole hole) {
+		this.hole = hole;
+	}
+	/**
      * Ha a movable null, felveszi a p:Player játékost a movable tagváltozónak. Ekkor true-t ad vissza.
      * Ha a movable nem null akkor először meghívja a movable pushedBy(pusher,p,d) függvényét. Ha az true-val tér vissza
      * akkor elhelyezi a p-t a movable tagváltozóban. Ha false-al tér vissza akkor nem helyezi el p-t és false-al tér vissza.

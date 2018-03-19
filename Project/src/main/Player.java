@@ -5,6 +5,9 @@ public class Player extends Thing{
 	 * A játékos pontjai.
 	 */
     private int points;
+    /**
+	 * A játékos játékban van-e.
+	 */
     private boolean alive;
     /**
 	 * A Player a játékos inputjára mozog. Ha nem létező (null) Field-re mozogna akkor visszatér anélkül hogy bármi történne.
@@ -37,8 +40,9 @@ public class Player extends Thing{
         
     }
     /**
-	 * A Player meghal, vagyis eltűnik a pályáról. Meghívja a field Remove függvényét, anélkül hogy először áthelyezné magát
-	 *  másvhova. Ezzel kikerül a játékból.
+	 * A Player meghal, vagyis eltűnik a pályáról. 
+	 * Meghívja a field Remove függvényét, anélkül hogy először áthelyezné magát
+	 *  másvhova.Az alive-ot false-ra állítja.
 	 */
     public void Die(){
     	System.out.println("Player.Die()");
@@ -89,6 +93,18 @@ public class Player extends Thing{
         
     }
     /**
+	 * @param points the points to set
+	 */
+	public void setPoints(int points) {
+		this.points = points;
+	}
+	/**
+	 * @param alive the alive to set
+	 */
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
+	/**
 	 * Megnöveli a játékos pontszámát eggyel (1).
 	 */
     public void AddPoint(){
