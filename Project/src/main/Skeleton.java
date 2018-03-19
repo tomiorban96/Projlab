@@ -27,11 +27,11 @@ public class Skeleton {
                     System.out.print("1. ...üres mezőre\n2. ...falnak\n3. ...lyukra\n4. ...kapcsolóra, ami...\n5. ...pontszerző mezőre\n$ ");
                     switch (sc.nextInt()){
                         case 1: //2.1
-                            //Todo: Játékos mozog üres mezőre
+                            Jatekosuresre();
                             break;
 
                         case 2: //2.2
-                            //Todo: Játékos mozog falnak
+                            Jatekosfalnak();
                             break;
 
                         case 3: //2.3
@@ -43,7 +43,7 @@ public class Skeleton {
 
                             boolean lastActivePlayer = getYesOrNo(sc.next().replaceAll("\n", "").charAt(0));
 
-                            //Todo: Játékos mozog lyukra, isOpen és lastActivePlayer változóktól függően
+                            PlayerMovesOntoHole(isOpen,lastActivePlayer);
 
                             break;
 
@@ -430,7 +430,30 @@ public class Skeleton {
 
     }
 
-    private static void PlayerPushesManyThingsOntoPointField(boolean fieldCompleted) {
+    private static void PlayerMovesOntoHole(boolean isOpen, boolean lastActivePlayer) {
+    	Game g=new Game();
+    	Player p=new Player();
+		Field f=new Field();
+		Hole h=new Hole();
+		g.getPlayers().add(p);
+		Direction d=Direction.Right;
+		f.setMovable(p);
+		p.SetField(f);
+		h.SetOpen(isOpen);
+		Hashtable <Direction,Field> hash=new Hashtable<Direction,Field>();
+    	hash.put(Direction.Left, f);
+    	Hashtable <Direction,Field> hash2=new Hashtable<Direction,Field>();
+    	hash2.put(Direction.Right, h);
+    	f.setNeighbors(hash2);
+    	h.setNeighbors(hash);
+		p.Move(d);
+		if(lastActivePlayer) {
+			g.EndGame();
+		}
+		
+	}
+
+	private static void PlayerPushesManyThingsOntoPointField(boolean fieldCompleted) {
     	Player p=new Player();
     	Field f=new Field();
 		Field f2=new Field();
