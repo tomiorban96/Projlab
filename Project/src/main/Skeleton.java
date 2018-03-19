@@ -1,6 +1,8 @@
 package main;
 
+import java.util.Hashtable;
 import java.util.Scanner;
+
 
 public class Skeleton {
     public static void main(String args[]){
@@ -145,11 +147,11 @@ public class Skeleton {
                             System.out.print("1. ...üres mezőre\n2. ...falnak\n3. ...lyukra\n4. ...kapcsolóra, ami...\n5. ...pontszerző mezőre\n$ ");
                             switch (sc.nextInt()){
                                 case 1: //3.1.1
-                                    //Todo: Játékos tol ládát üres mezőre
+                                    JatekosLadatUresre();
                                     break;
 
                                 case 2: //3.1.2
-                                    //Todo: Játékos tol ládát falnak
+                                    JatekosLadatFalnak();
                                     break;
 
                                 case 3: //3.1.3
@@ -641,5 +643,43 @@ public class Skeleton {
 
     private static void printSubMenu(){
         System.out.print("1. ...nincs semmi\n2. ...láda áll\n3. ...játékos áll\n$ ");
+    }
+
+    private static void JatekosLadatUresre(){
+        Field f1 = new Field();
+        Field f2 = new Field();
+        Field f3 = new Field();
+        Player p = new Player();
+        Box b = new Box();
+        Hashtable <Direction,Field> h1=new Hashtable<>();
+        Hashtable <Direction,Field> h2=new Hashtable<>();
+        h1.put(Direction.Down, f2);
+        h2.put(Direction.Down, f3);
+        f1.SetNeighbors(h1);
+        f2.SetNeighbors(h2);
+        p.SetField(f1);
+        b.SetField(f2);
+        f2.SetMovable(b);
+        p.Move(Direction.Down);
+    }
+
+    private static void JatekosLadatFalnak(){
+        Field f1 = new Field();
+        Field f2 = new Field();
+        Wall w = new Wall();
+        Player p = new Player();
+        Box b = new Box();
+        Game g = new Game();
+        Hashtable <Direction,Field> h1=new Hashtable<>();
+        Hashtable <Direction,Field> h2=new Hashtable<>();
+        h1.put(Direction.Down, f2);
+        h2.put(Direction.Down, w);
+        f1.SetNeighbors(h1);
+        f2.SetNeighbors(h2);
+        p.SetField(f1);
+        b.SetField(f2);
+        b.SetGame(g);
+        f2.SetMovable(b);
+        p.Move(Direction.Down);
     }
 }
