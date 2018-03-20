@@ -5,9 +5,6 @@ public class Player extends Thing{
 	 * A játékos pontjai.
 	 */
     private int points;
-    /**
-	 * A játékos játékban van-e.
-	 */
     private boolean alive;
     /**
 	 * A Player a játékos inputjára mozog. Ha nem létező (null) Field-re mozogna akkor visszatér anélkül hogy bármi történne.
@@ -16,40 +13,36 @@ public class Player extends Thing{
 	 *  Ha az Accept visszatérése false akkor nem hívja meg a Remove-ot.
 	 *  @param d az az irány amerre mozog
 	 */
-    
     public void Move(Direction d){
     	System.out.println("Player.Move(d)");
-        Field neighbor=field.GetNeighbor(d);
+        Field neighbor=field.GetNeighbor(d);				//szomszéd mező
         Field currentField=field;
         if (neighbor == null) {
         	System.out.println("Player.Moved() returns");
         	return;
         }
         else {
-        	if(neighbor.Accept(this,this, d)) {
+        	if(neighbor.Accept(this,this, d)) {				//szomszédra lehet mozogni
         		currentField.Remove(this);
         		System.out.println("Player.Move(d) returns");
             	return;
         	}
-        	else {
+        	else {											//szomszédra nem lehet mozogni
         		System.out.println("Player.Move(d) returns");
         		return;
         	}
-        	
         }
-        
     }
     /**
-	 * A Player meghal, vagyis eltűnik a pályáról. 
-	 * Meghívja a field Remove függvényét, anélkül hogy először áthelyezné magát
-	 *  másvhova.Az alive-ot false-ra állítja.
+	 * A Player meghal, vagyis eltűnik a pályáról. Meghívja a field Remove függvényét, anélkül hogy először áthelyezné magát
+	 *  másvhova. Ezzel kikerül a játékból.
 	 */
     public void Die(){
     	System.out.println("Player.Die()");
     	alive=false;
-    	if (game.CheckEndGame()){
-		game.EndGame();
-	}
+    	if (game.CheckEndGame()) {					//ha vége van a játéknak
+    		game.EndGame();
+    	}
     	field.Remove(this);
     	System.out.println("Player.Die() returns");
     }
@@ -64,24 +57,23 @@ public class Player extends Thing{
 	 */
     public boolean PushedBy(Player p, Thing t, Direction d){
     	System.out.println("Player.Pushedby(p,t,d)");
-    	if(p==(Player)t) {
-    		System.out.println("Player.Pushedby(p,t,d) returns");
+    	if(p==(Player)t) {									//ha játékos tolna
+    		System.out.println("Player.Pushedby(p,t,d) returns false");
     		return false;
     	}
     	else {
     		Field currentField=field;
     		Field neighbor=field.GetNeighbor(d);
-    		if(neighbor.Accept(this,p,d)) {
+    		if(neighbor.Accept(this,p,d)) {					//ha lehet mozogni szomszédra
     			currentField.Remove(this);
-    			System.out.println("Player.Pushedby(p,t,d) returns");
+    			System.out.println("Player.Pushedby(p,t,d) returns true");
     			return true;
     		}
-    		else {
-    			Die();
-    			System.out.println("Player.Pushedby(p,t,d) returns");
+    		else {											//ha nem lehet mozogni szomszédra
+    			Die();										//játékos meghal
+    			System.out.println("Player.Pushedby(p,t,d) returns true");
     			return true;
     		}
-    		
     	}
     }
     /**
@@ -95,18 +87,6 @@ public class Player extends Thing{
         
     }
     /**
-	 * @param points the points to set
-	 */
-	public void setPoints(int points) {
-		this.points = points;
-	}
-	/**
-	 * @param alive the alive to set
-	 */
-	public void setAlive(boolean alive) {
-		this.alive = alive;
-	}
-	/**
 	 * Megnöveli a játékos pontszámát eggyel (1).
 	 */
     public void AddPoint(){
@@ -114,7 +94,11 @@ public class Player extends Thing{
     	System.out.println("Player.Addpoint() returns");
         points++;
     }
-    public boolean GetAlive() {
+    public boolean getAlive() {
     	return alive;
     }
+    public void setAlive(boolean alive) {
+    	this.alive=alive;
+    }
+    
 }
