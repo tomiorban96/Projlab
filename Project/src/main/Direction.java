@@ -5,6 +5,6 @@ package main;
 public enum Direction {
     Up,
     Down,
-    Right,
+    Right, 
     Left; 
 }
