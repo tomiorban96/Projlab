@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Hashtable;
 
 public class Field {
@@ -10,26 +9,9 @@ public class Field {
 	 */
     protected Thing movable;
     /**
-    * A mező négy irányban lévő szomszédja.
-    * Lehet egy, vagy több irányban null, pl.:a pálya sarkán.
-    */
+     * A mező négy irányban lévő szomszédja.
+     */
     private Hashtable<Direction,Field> neighbors;
-
-	/**
- 	 * A mező konstruktora
- 	 */
-    public Field() {
-    	
-    }
-	/**
-	 * A mező konstruktora, kezdeti értékekkel
-	 * @param movable a movable kívánt értéke
-	 * @param neighbors a neighbors kívánt értéke
-	 */
-    public Field(Thing movable, Hashtable<Direction,Field> neighbors) {
-    	this.movable=movable;
-    	this.neighbors=neighbors;
-    }
     /**
      * Ha a movable null, felveszi a p:Player játékost a movable tagváltozónak. Ekkor true-t ad vissza.
      * Ha a movable nem null akkor először meghívja a movable pushedBy(pusher,p,d) függvényét. Ha az true-val tér vissza
@@ -42,7 +24,8 @@ public class Field {
     public boolean Accept(Player p, Player pusher, Direction d){
         System.out.println("Field.Accept()");
          if (movable!=null){                                     //van rajta valami
-            if (movable.PushedBy(pusher,p,d)){                  //ha el lehet tolni
+            if (movable.PushedBy(pusher,p,d)){                   //ha el lehet tolni
+            	
                 System.out.println("Field.Accept() returns true");
                 return true;
             }
@@ -52,6 +35,7 @@ public class Field {
             }     
         }
         else{                                                   //nincs rajta semmi
+        	
             System.out.println("Field.Accept() returns true");
             return true;
         }
@@ -68,7 +52,8 @@ public class Field {
     public boolean Accept(Box b, Player pusher,Direction d){
         System.out.println("Field.Accept()");
          if (movable!=null){                                     //van rajta valami
-            if (movable.PushedBy(pusher,b,d)){                  //ha el lehet tolni
+            if (movable.PushedBy(pusher,b,d)){                 	 //ha el lehet tolni
+            	
                 System.out.println("Field.Accept() returns true");
                 return true;
             }
@@ -78,23 +63,12 @@ public class Field {
             }     
         }
         else{                                                   //nincs rajta semmi
+        	
             System.out.println("Field.Accept() returns true");
             return true;
         }
     }
     /**
-	 * @return the movable
-	 */
-	public Thing getMovable() {
-		return movable;
-	}
-	/**
-	 * @param movable the movable to set
-	 */
-	public void setMovable(Thing movable) {
-		this.movable = movable;
-	}
-	/**
      * Kiveszi a null-al teszi egyenlővé a moveable-t, ezzel kivéve azt a mezőröl.
      * @param t az a thing amit ki kell venni a mezőröl
      */
@@ -113,21 +87,24 @@ public class Field {
        System.out.println("Field.GetNeighbor() returns");
        return neighbors.get(d);
     }
+    /**
+   	 * @return the movable
+   	 */
+	public Thing getMovable() {
+		return movable;
+	}
+	/**
+	 * @param movable the movable to set
+	 */
+	public void setMovable(Thing movable) {
+		this.movable = movable;
+	}
 	/**
 	 * @param neighbors the neighbors to set
 	 */
 	public void setNeighbors(Hashtable<Direction, Field> neighbors) {
 		this.neighbors = neighbors;
 	}
-	
 
-    public void SetNeighbors(Hashtable<Direction,Field> neighbors){
-        this.neighbors = neighbors;
-    }
-
-    public void SetMovable(Thing movable) {
-        this.movable = movable;
-    }
-    
     
 }
