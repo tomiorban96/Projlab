@@ -10,30 +10,6 @@ public class PointField extends Field {
 	 */
     private Game game;
     /**
-	 * @return the completed
-	 */
-	public boolean isCompleted() {
-		return completed;
-	}
-	/**
-	 * @param completed the completed to set
-	 */
-	public void setCompleted(boolean completed) {
-		this.completed = completed;
-	}
-	/**
-	 * @return the game
-	 */
-	public Game getGame() {
-		return game;
-	}
-	/**
-	 * @param game the game to set
-	 */
-	public void setGame(Game game) {
-		this.game = game;
-	}
-	/**
 	* Ha a movable null, felveszi a p:Player játékost a movable tagváltozónak. Ekkor true-t ad vissza.
     * Ha a movable nem null akkor először meghívja a movable pushedBy(pusher,p,d) függvényét. Ha az true-val tér vissza
     * akkor elhelyezi a p-t a movable tagváltozóban. Ha false-al tér vissza akkor nem helyezi el p-t és false-al tér vissza.
@@ -53,17 +29,20 @@ public class PointField extends Field {
             }
             else{
                 if (movable.PushedBy(pusher,p,d)){                               //ha azt el lehet tolni
+                	
                     System.out.println("PointField.Accept() returns true");
                     return true;
                 }
                 else{
                     System.out.println("PointField.Accept() returns false");    //ha nem
+                    
                     return false;
                 }
             }
         }
         else{
             System.out.println("PointField.Accept() returns true");             //ha nincs rajta semmi
+            
             return true;
         }
     }
@@ -88,15 +67,18 @@ public class PointField extends Field {
             }
             else{
                 if (movable.PushedBy(pusher,b,d)){                               //ha azt el lehet tolni
+                	
                     completed=true;
-                    pusher.AddPoint();
-                    game.DecActiveBoxes();
-                    game.CheckEndGame();
+                    pusher.AddPoint();											//toló játékos pontot kap
+                    game.DecActiveBoxes();										//aktív ládák számának csökkentése
+                    if (game.CheckEndGame()) {									//játék vége?
+                    	game.EndGame();
+                    }
                     System.out.println("PointField.Accept() returns true");
                     return true;
                 }
                 else{
-                    System.out.println("PointField.Accept() returns false");    //ha nem
+                    System.out.println("PointField.Accept() returns false");    //ha nem lehet tolni
                     return false;
                 }
             }
@@ -105,10 +87,24 @@ public class PointField extends Field {
             pusher.AddPoint();
             completed=true;
             game.DecActiveBoxes();
-            game.CheckEndGame();
+            if (game.CheckEndGame()) {											//játék vége?
+            	game.EndGame();
+            }
             System.out.println("PointField.Accept() returns true");             //ha nincs rajta semmi
+            
             return true;
         }
-         
     }
+    /**
+	 * @param completed the completed to set
+	 */
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+	/**
+	 * @param game the game to set
+	 */
+	public void setGame(Game game) {
+		this.game = game;
+	}
 }
