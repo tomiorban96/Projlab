@@ -13,4 +13,4 @@ Szkeleton beadás:
 https://docs.google.com/document/d/19GL-3-hAVJR0j03B6oofokHjPjEAp0YAtachUJVYcO4/edit?usp=sharing
 
 Prototípus koncepció:
-https://docs.google.com/document/d/1B44Ra2-kkFcUgHN3bTs25X38hDRxhm1qRQqMPCg9XOM/edit
+https://docs.google.com/document/d/1B44Ra2-kkFcUgHN3bTs25X38hDRxhm1qRQqMPCg9XOM/edit?usp=sharing
